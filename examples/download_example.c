@@ -2,7 +2,19 @@
 #include <stdlib.h>
 #include "kaggle_downloader.h"
 
-int main() {
+void print_usage(const char* program_name) {
+    printf("Usage: %s <dataset_path>\n", program_name);
+    printf("Example: %s jocelyndumlao/impulse-buying-factors-on-tiktok-shop\n", program_name);
+    printf("         %s chetankv/dogs-cats-images\n", program_name);
+}
+
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        print_usage(argv[0]);
+        return 1;
+    }
+
+    const char* dataset_path = argv[1];
     const char* username = getenv("KAGGLE_USERNAME");
     const char* api_key = getenv("KAGGLE_KEY");
 
@@ -24,11 +36,9 @@ int main() {
         return 1;
     }
 
-    printf("Starting download...\n");
+    printf("Starting download of dataset: %s\n", dataset_path);
     char output_path[512];
-    int result = kaggle_download_dataset("chetankv/dogs-cats-images", 
-                                       output_path, 
-                                       sizeof(output_path));
+    int result = kaggle_download_dataset(dataset_path, output_path, sizeof(output_path));
 
     if (result == KAGGLE_SUCCESS) {
         printf("Dataset downloaded successfully to: %s\n", output_path);

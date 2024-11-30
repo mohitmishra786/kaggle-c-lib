@@ -21,6 +21,10 @@ int create_directory(const char* path) {
 // Callback function for writing directly to file
 size_t write_file_callback(void* ptr, size_t size, size_t nmemb, void* stream) {
     FILE* file = (FILE*)stream;
+    if (!file) {
+        fprintf(stderr, "Error: Invalid file pointer\n");
+        return 0;
+    }
     size_t written = fwrite(ptr, size, nmemb, file);
     return written;
 }
