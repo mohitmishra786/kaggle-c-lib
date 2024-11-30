@@ -10,6 +10,15 @@ A C library for downloading datasets from Kaggle programmatically. This library 
 - ⚡ Efficient error handling
 - 💻 Cross-platform support (Linux, macOS, Windows)
 
+## 🔮 Roadmap
+
+Future plans include:
+- [ ] Dataset search functionality
+- [ ] Competition dataset support
+- [ ] Async download support
+- [ ] Dataset metadata retrieval
+- [ ] Custom SSL certificate support
+
 ## Prerequisites
 
 Before using the library, ensure you have:
